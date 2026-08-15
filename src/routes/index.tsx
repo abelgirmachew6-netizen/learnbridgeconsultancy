@@ -33,10 +33,10 @@ const stats = [
 ];
 
 const destinations = [
-  { name: "USA", blurb: "Top universities & career opportunities", img: usaImg },
-  { name: "UK", blurb: "Shorter degrees with global recognition", img: ukImg },
-  { name: "Australia", blurb: "High quality education & work opportunities", img: ausImg },
-  { name: "Europe", blurb: "Affordable education & diverse cultures", img: europeImg },
+  { slug: "usa", name: "USA", blurb: "Top universities & career opportunities", img: usaImg },
+  { slug: "uk", name: "UK", blurb: "Shorter degrees with global recognition", img: ukImg },
+  { slug: "australia", name: "Australia", blurb: "High quality education & work opportunities", img: ausImg },
+  { slug: "europe", name: "Europe", blurb: "Affordable education & diverse cultures", img: europeImg },
 ];
 
 const services = [
@@ -120,9 +120,11 @@ function HomePage() {
 
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {destinations.map((d) => (
-                <article
+                <Link
                   key={d.name}
-                  className="group relative overflow-hidden rounded-xl shadow-card transition-shadow hover:shadow-lift"
+                  to="/destinations/$country"
+                  params={{ country: d.slug }}
+                  className="group relative block overflow-hidden rounded-xl shadow-card transition-shadow hover:shadow-lift"
                 >
                   <img
                     src={d.img}
@@ -136,7 +138,7 @@ function HomePage() {
                     <h3 className="text-lg font-semibold text-navy-foreground">{d.name}</h3>
                     <p className="mt-1 text-xs text-navy-foreground/75">{d.blurb}</p>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
           </div>
