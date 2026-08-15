@@ -233,7 +233,13 @@ function CountryPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-navy-deep/90 via-navy-deep/70 to-navy-deep/30" />
           <div className="absolute inset-0 flex items-center">
             <div className="section-shell text-navy-foreground">
-              <h1 className="max-w-3xl text-4xl sm:text-5xl">{c.title}</h1>
+              <Link
+                to="/destinations"
+                className="inline-flex items-center gap-2 text-xs font-semibold text-navy-foreground/80 hover:text-navy-foreground"
+              >
+                <ArrowLeft className="h-4 w-4" /> Back to Destinations
+              </Link>
+              <h1 className="mt-5 max-w-3xl text-4xl sm:text-5xl">{c.title}</h1>
               <p className="mt-5 max-w-xl text-sm text-navy-foreground/80">{c.intro}</p>
               <p className="mt-3 max-w-xl text-sm font-semibold">{c.bold}</p>
               <Link
