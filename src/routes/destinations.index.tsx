@@ -6,7 +6,7 @@ import ukImg from "@/assets/dest-uk.jpg";
 import ausImg from "@/assets/dest-australia.jpg";
 import europeImg from "@/assets/dest-europe.jpg";
 
-export const Route = createFileRoute("/destinations")({
+export const Route = createFileRoute("/destinations/")({
   head: () => ({
     meta: [
       { title: "Study Destinations — USA, UK, Australia & Europe | LearnBridge" },
