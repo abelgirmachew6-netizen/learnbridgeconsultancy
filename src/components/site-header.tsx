@@ -1,0 +1,78 @@
+import { Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+
+const nav = [
+  { to: "/", label: "Home" },
+  { to: "/destinations", label: "Destinations" },
+  { to: "/services", label: "Services" },
+  { to: "/about", label: "About" },
+  { to: "/contact", label: "Contact" },
+] as const;
+
+export function SiteHeader() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur">
+      <div className="section-shell flex h-16 items-center justify-between">
+        <Link to="/" className="font-display text-xl font-bold tracking-tight text-navy">
+          LearnBridge
+        </Link>
+
+        <nav className="hidden items-center gap-8 md:flex">
+          {nav.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              activeOptions={{ exact: item.to === "/" }}
+              className="text-sm text-muted-foreground transition-colors hover:text-navy"
+              activeProps={{
+                className:
+                  "text-sm text-navy underline decoration-accent decoration-2 underline-offset-8",
+              }}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-2">
+          <Link
+            to="/contact"
+            className="hidden rounded-md bg-navy px-4 py-2.5 text-sm font-semibold text-navy-foreground shadow-card transition-colors hover:bg-navy-deep sm:inline-flex"
+          >
+            Book Free Consultation
+          </Link>
+          <button
+            type="button"
+            aria-label="Toggle menu"
+            onClick={() => setOpen((v) => !v)}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-navy md:hidden"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+      </div>
+
+      {open && (
+        <div className="border-t border-border bg-background md:hidden">
+          <nav className="section-shell flex flex-col py-3">
+            {nav.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={() => setOpen(false)}
+                className="py-2.5 text-sm text-muted-foreground"
+                activeProps={{ className: "py-2.5 text-sm font-semibold text-navy" }}
+                activeOptions={{ exact: item.to === "/" }}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      )}
+    </header>
+  );
+}
