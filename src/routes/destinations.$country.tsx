@@ -156,13 +156,13 @@ export const Route = createFileRoute("/destinations/$country")({
   loader: ({ params }) => {
     const data = countries[params.country.toLowerCase()];
     if (!data) throw notFound();
-    return { country: data };
+    return { slug: data.slug, name: data.name, title: data.title, intro: data.intro };
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
       return { meta: [{ title: "Destination unavailable — LearnBridge" }, { name: "robots", content: "noindex" }] };
     }
-    const c = loaderData.country;
+    const c = loaderData;
     return {
       meta: [
         { title: `${c.title} — Universities, Tuition & Visa | LearnBridge` },
@@ -176,7 +176,8 @@ export const Route = createFileRoute("/destinations/$country")({
 });
 
 function CountryPage() {
-  const { country: c } = Route.useLoaderData();
+  const { slug } = Route.useLoaderData();
+  const c = countries[slug]!;
 
   return (
     <div className="min-h-screen bg-background">
