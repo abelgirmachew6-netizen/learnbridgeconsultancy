@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { Award, BookOpen, Briefcase, GraduationCap, Check } from "lucide-react";
+import { ArrowLeft, Award, BookOpen, Briefcase, GraduationCap, Check } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import graduatesImg from "@/assets/graduates.jpg";
@@ -152,6 +152,8 @@ const countries: Record<string, Country> = {
   },
 };
 
+const SITE_URL = "https://project--b431bd4f-7887-4558-94e9-8488a27e23b2.lovable.app";
+
 export const Route = createFileRoute("/destinations/$country")({
   loader: ({ params }) => {
     const data = countries[params.country.toLowerCase()];
@@ -163,17 +165,53 @@ export const Route = createFileRoute("/destinations/$country")({
       return { meta: [{ title: "Destination unavailable — LearnBridge" }, { name: "robots", content: "noindex" }] };
     }
     const c = loaderData;
+    const url = `${SITE_URL}/destinations/${c.slug}`;
     return {
       meta: [
         { title: `${c.title} — Universities, Tuition & Visa | LearnBridge` },
         { name: "description", content: `${c.intro} LearnBridge guides you through applications, scholarships and visas for ${c.name}.` },
         { property: "og:title", content: `${c.title} | LearnBridge` },
         { property: "og:description", content: c.intro },
+        { property: "og:url", content: url },
       ],
+      links: [{ rel: "canonical", href: url }],
     };
   },
   component: CountryPage,
+  notFoundComponent: UnknownDestination,
 });
+
+function UnknownDestination() {
+  return (
+    <div className="min-h-screen bg-background">
+      <SiteHeader />
+      <main className="section-shell flex min-h-[60vh] flex-col justify-center py-20">
+        <p className="eyebrow text-accent">Destination not found</p>
+        <h1 className="mt-3 text-3xl text-navy">We don't cover that destination yet</h1>
+        <p className="mt-4 max-w-xl text-sm text-muted-foreground">
+          Check the destinations we currently support, or talk to an advisor about where you want to
+          study.
+        </p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link
+            to="/destinations"
+            className="rounded-md bg-navy px-6 py-3 text-sm font-semibold text-navy-foreground hover:bg-navy-deep"
+          >
+            View All Destinations
+          </Link>
+          <Link
+            to="/contact"
+            className="rounded-md bg-secondary px-6 py-3 text-sm font-semibold text-navy hover:bg-muted"
+          >
+            Talk to an Advisor
+          </Link>
+        </div>
+      </main>
+      <SiteFooter />
+    </div>
+  );
+}
+
 
 function CountryPage() {
   const { slug } = Route.useLoaderData();
@@ -195,7 +233,13 @@ function CountryPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-navy-deep/90 via-navy-deep/70 to-navy-deep/30" />
           <div className="absolute inset-0 flex items-center">
             <div className="section-shell text-navy-foreground">
-              <h1 className="max-w-3xl text-4xl sm:text-5xl">{c.title}</h1>
+              <Link
+                to="/destinations"
+                className="inline-flex items-center gap-2 text-xs font-semibold text-navy-foreground/80 hover:text-navy-foreground"
+              >
+                <ArrowLeft className="h-4 w-4" /> Back to Destinations
+              </Link>
+              <h1 className="mt-5 max-w-3xl text-4xl sm:text-5xl">{c.title}</h1>
               <p className="mt-5 max-w-xl text-sm text-navy-foreground/80">{c.intro}</p>
               <p className="mt-3 max-w-xl text-sm font-semibold">{c.bold}</p>
               <Link
