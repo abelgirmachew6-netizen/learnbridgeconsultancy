@@ -27,24 +27,28 @@ export const Route = createFileRoute("/destinations/")({
 
 const destinations = [
   {
+    slug: "usa",
     name: "USA",
     blurb: "Top universities & career opportunities",
     img: usaImg,
     points: ["World-ranked universities", "Optional Practical Training after graduation", "Broad scholarship options"],
   },
   {
+    slug: "uk",
     name: "UK",
     blurb: "Shorter degrees with global recognition",
     img: ukImg,
     points: ["One-year master's programs", "Two-year graduate route visa", "Globally recognized degrees"],
   },
   {
+    slug: "australia",
     name: "Australia",
     blurb: "High quality education & work opportunities",
     img: ausImg,
     points: ["Post-study work rights", "Part-time work while studying", "Strong student support systems"],
   },
   {
+    slug: "europe",
     name: "Europe",
     blurb: "Affordable education & diverse cultures",
     img: europeImg,
@@ -70,7 +74,12 @@ function DestinationsPage() {
         <section className="py-16">
           <div className="section-shell grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {destinations.map((d) => (
-              <article key={d.name} className="overflow-hidden rounded-xl bg-card shadow-card">
+              <Link
+                key={d.name}
+                to="/destinations/$country"
+                params={{ country: d.slug }}
+                className="block overflow-hidden rounded-xl bg-card shadow-card transition-shadow hover:shadow-lift"
+              >
                 <div className="relative">
                   <img
                     src={d.img}
@@ -93,7 +102,10 @@ function DestinationsPage() {
                     </li>
                   ))}
                 </ul>
-              </article>
+                <p className="px-5 pb-5 text-sm font-semibold text-navy underline decoration-accent decoration-2 underline-offset-4">
+                  Learn more about {d.name}
+                </p>
+              </Link>
             ))}
           </div>
         </section>
