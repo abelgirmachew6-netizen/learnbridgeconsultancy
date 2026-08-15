@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { Award, BookOpen, Briefcase, GraduationCap, Check } from "lucide-react";
+import { ArrowLeft, Award, BookOpen, Briefcase, GraduationCap, Check } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import graduatesImg from "@/assets/graduates.jpg";
