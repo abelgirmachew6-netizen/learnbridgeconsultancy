@@ -29,7 +29,6 @@ export const Route = createFileRoute("/")({
 const stats = [
   { value: "98%", label: "Visa Success Rate" },
   { value: "10+", label: "Study Destinations" },
-  { value: "50+", label: "Students Placed" },
 ];
 
 const destinations = [
