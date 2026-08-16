@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, MapPin } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ConsultationForm } from "@/components/consultation-form";
 import heroImg from "@/assets/contact-hero.jpg";
 
 export const Route = createFileRoute("/contact")({
