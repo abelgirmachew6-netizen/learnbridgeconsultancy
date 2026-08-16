@@ -75,7 +75,7 @@ function HomePage() {
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link
-                to="/contact"
+                to="/contact" hash="book"
                 className="rounded-md bg-navy px-6 py-3 text-sm font-semibold text-navy-foreground shadow-card transition-colors hover:bg-navy-deep"
               >
                 Book Free Consultation
@@ -168,7 +168,7 @@ function HomePage() {
               Book a free 15–20 minute consultation and take the first step toward studying abroad.
             </p>
             <Link
-              to="/contact"
+              to="/contact" hash="book"
               className="mt-8 inline-flex items-center gap-2 rounded-md bg-navy-foreground px-6 py-3 text-sm font-semibold text-navy transition-opacity hover:opacity-90"
             >
               Book Free Consultation <ArrowRight className="h-4 w-4" />

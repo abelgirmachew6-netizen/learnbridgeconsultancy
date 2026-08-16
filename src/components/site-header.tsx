@@ -39,7 +39,7 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <Link
-            to="/contact"
+            to="/contact" hash="book"
             className="hidden rounded-md bg-navy px-4 py-2.5 text-sm font-semibold text-navy-foreground shadow-card transition-colors hover:bg-navy-deep sm:inline-flex"
           >
             Book Free Consultation

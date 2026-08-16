@@ -15,6 +15,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as DestinationsIndexRouteImport } from './routes/destinations.index'
 import { Route as DestinationsCountryRouteImport } from './routes/destinations.$country'
+import { Route as ApiPublicConsultationRouteImport } from './routes/api/public/consultation'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +47,11 @@ const DestinationsCountryRoute = DestinationsCountryRouteImport.update({
   path: '/destinations/$country',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicConsultationRoute = ApiPublicConsultationRouteImport.update({
+  id: '/api/public/consultation',
+  path: '/api/public/consultation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/destinations/$country': typeof DestinationsCountryRoute
   '/destinations/': typeof DestinationsIndexRoute
+  '/api/public/consultation': typeof ApiPublicConsultationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/destinations/$country': typeof DestinationsCountryRoute
   '/destinations': typeof DestinationsIndexRoute
+  '/api/public/consultation': typeof ApiPublicConsultationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,6 +79,7 @@ export interface FileRoutesById {
   '/services': typeof ServicesRoute
   '/destinations/$country': typeof DestinationsCountryRoute
   '/destinations/': typeof DestinationsIndexRoute
+  '/api/public/consultation': typeof ApiPublicConsultationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,6 +90,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/destinations/$country'
     | '/destinations/'
+    | '/api/public/consultation'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -89,6 +99,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/destinations/$country'
     | '/destinations'
+    | '/api/public/consultation'
   id:
     | '__root__'
     | '/'
@@ -97,6 +108,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/destinations/$country'
     | '/destinations/'
+    | '/api/public/consultation'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -106,6 +118,7 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRoute
   DestinationsCountryRoute: typeof DestinationsCountryRoute
   DestinationsIndexRoute: typeof DestinationsIndexRoute
+  ApiPublicConsultationRoute: typeof ApiPublicConsultationRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -152,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DestinationsCountryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/consultation': {
+      id: '/api/public/consultation'
+      path: '/api/public/consultation'
+      fullPath: '/api/public/consultation'
+      preLoaderRoute: typeof ApiPublicConsultationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -162,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRoute,
   DestinationsCountryRoute: DestinationsCountryRoute,
   DestinationsIndexRoute: DestinationsIndexRoute,
+  ApiPublicConsultationRoute: ApiPublicConsultationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

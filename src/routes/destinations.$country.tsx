@@ -243,7 +243,7 @@ function CountryPage() {
               <p className="mt-5 max-w-xl text-sm text-navy-foreground/80">{c.intro}</p>
               <p className="mt-3 max-w-xl text-sm font-semibold">{c.bold}</p>
               <Link
-                to="/contact"
+                to="/contact" hash="book"
                 className="mt-8 inline-flex rounded-md bg-navy-foreground px-6 py-3 text-sm font-semibold text-navy hover:opacity-90"
               >
                 Book Free Consultation
@@ -334,7 +334,7 @@ function CountryPage() {
             </p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
               <Link
-                to="/contact"
+                to="/contact" hash="book"
                 className="rounded-md bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground hover:opacity-90"
               >
                 Book Free Consultation
