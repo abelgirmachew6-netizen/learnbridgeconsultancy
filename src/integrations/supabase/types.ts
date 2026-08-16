@@ -14,7 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      consultation_requests: {
+        Row: {
+          created_at: string
+          destination: string | null
+          email: string
+          first_name: string
+          goals: string | null
+          id: string
+          last_name: string | null
+        }
+        Insert: {
+          created_at?: string
+          destination?: string | null
+          email: string
+          first_name: string
+          goals?: string | null
+          id?: string
+          last_name?: string | null
+        }
+        Update: {
+          created_at?: string
+          destination?: string | null
+          email?: string
+          first_name?: string
+          goals?: string | null
+          id?: string
+          last_name?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
