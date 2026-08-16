@@ -37,22 +37,14 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <Link
-            to="/contact" hash="book"
-            className="hidden rounded-md bg-navy px-4 py-2.5 text-sm font-semibold text-navy-foreground shadow-card transition-colors hover:bg-navy-deep sm:inline-flex"
-          >
-            Book Free Consultation
-          </Link>
-          <button
-            type="button"
-            aria-label="Toggle menu"
-            onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-navy md:hidden"
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
+        <button
+          type="button"
+          aria-label="Toggle menu"
+          onClick={() => setOpen((v) => !v)}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-navy md:hidden"
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
 
       {open && (
