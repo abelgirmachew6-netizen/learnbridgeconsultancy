@@ -51,12 +51,14 @@ function ContactPage() {
           </div>
         </section>
 
-        <section className="bg-surface py-16">
+        <ConsultationForm />
+
+        <section className="bg-surface pb-16">
           <div className="section-shell grid gap-8 lg:grid-cols-[1.2fr_1fr]">
             <div className="rounded-xl bg-card p-8 shadow-card">
-              <h2 className="text-2xl text-navy">Ready to Start Your Journey?</h2>
+              <h2 className="text-2xl text-navy">Prefer to chat right now?</h2>
               <p className="mt-2 text-sm text-muted-foreground">
-                Book a free consultation and take the first step toward studying abroad.
+                Message us on WhatsApp and we'll reply during consultation hours.
               </p>
               <p className="mt-8 text-sm font-semibold text-navy">
                 Limited free consultation slots available each week
@@ -70,9 +72,10 @@ function ContactPage() {
                 rel="noopener noreferrer"
                 className="mt-8 inline-flex items-center gap-2 rounded-md bg-navy px-6 py-3 text-sm font-semibold text-navy-foreground transition-colors hover:bg-navy-deep"
               >
-                Book Free Consultation <ArrowRight className="h-4 w-4" />
+                Chat on WhatsApp <ArrowRight className="h-4 w-4" />
               </a>
             </div>
+
 
             <aside className="rounded-xl bg-navy p-8 text-navy-foreground shadow-lift">
               <h2 className="flex items-center gap-2 text-xl">
