@@ -48,7 +48,7 @@ function ContactPage() {
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-navy-foreground/85">
               Contact us and get personalized guidance from our team.
             </p>
-            <div className="mt-8 h-0.5 w-16 bg-accent" />
+            
           </div>
         </section>
 
