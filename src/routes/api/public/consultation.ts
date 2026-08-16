@@ -47,22 +47,7 @@ export const Route = createFileRoute("/api/public/consultation")({
           return Response.json({ error: "Could not save your request." }, { status: 500 });
         }
 
-        // Email notification is sent once the sender domain is verified.
-        try {
-          const { sendTemplateEmail } = await import("@/lib/email-templates/send-email");
-          await sendTemplateEmail("consultation-request", "learnbridgeconsultancy@gmail.com", {
-            templateData: {
-              firstName: data.firstName,
-              lastName: data.lastName,
-              email: data.email,
-              destination: data.destination,
-              goals: data.goals,
-            },
-            idempotencyKey: `consultation-request-${row.id}`,
-          });
-        } catch (err) {
-          console.error("consultation email failed", err);
-        }
+        console.log("consultation request saved", row.id);
 
         return Response.json({ ok: true });
       },
