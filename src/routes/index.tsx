@@ -90,7 +90,7 @@ function HomePage() {
         </section>
 
         <section className="bg-navy text-navy-foreground">
-          <div className="section-shell grid grid-cols-1 gap-10 py-14 sm:grid-cols-3">
+          <div className="section-shell grid grid-cols-1 gap-10 py-14 sm:grid-cols-2">
             {stats.map((s) => (
               <div key={s.label} className="text-center">
                 <p className="font-display text-4xl font-bold text-navy-soft">{s.value}</p>
