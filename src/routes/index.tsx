@@ -21,7 +21,10 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "University applications, visa support, and career guidance for students studying abroad.",
       },
+      { property: "og:url", content: "https://mock-render-viewer.lovable.app" },
+      { property: "og:type", content: "website" },
     ],
+    links: [{ rel: "canonical", href: "https://mock-render-viewer.lovable.app" }],
   }),
   component: HomePage,
 });
