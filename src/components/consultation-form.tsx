@@ -19,10 +19,17 @@ export function ConsultationForm() {
     const destination = String(fd.get("destination") ?? "").trim();
     const goals = String(fd.get("goals") ?? "").trim();
 
-    if (!firstName || !email) {
-      toast.error("Please enter your first name and email address.");
+    if (!firstName) {
+      toast.error("Please enter your first name.");
+      form.querySelector<HTMLInputElement>('input[name="firstName"]')?.focus();
       return;
     }
+    if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email)) {
+      toast.error("Please enter a valid email address, e.g. name@example.com");
+      form.querySelector<HTMLInputElement>('input[name="email"]')?.focus();
+      return;
+    }
+    if (submitting) return;
 
     setSubmitting(true);
     try {
