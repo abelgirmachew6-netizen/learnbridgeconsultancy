@@ -3,7 +3,7 @@ import { AlertTriangle, Mail, MapPin, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 
 const destinations = ["USA", "UK", "Australia", "Europe", "Not sure yet"];
-const WEB3FORMS_ACCESS_KEY = "b377f196-f2f6-4ca8-865d-65ab34312daa";
+const WEB3FORMS_ACCESS_KEY = "8572abb1-60ac-49ef-8737-f1e4fcfb0bc2";
 
 export function ConsultationForm() {
   const [submitting, setSubmitting] = useState(false);
