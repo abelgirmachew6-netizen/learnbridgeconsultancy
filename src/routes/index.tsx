@@ -10,7 +10,7 @@ import europeImg from "@/assets/dest-europe.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "LearnBridge — Study Abroad Consultancy in Addis Ababa" },
+      { title: "Learn Bridge Consultancy | Study Abroad & Visa Consultants" },
       {
         name: "description",
         content:
