@@ -1,4 +1,11 @@
 import { Link } from "@tanstack/react-router";
+import { Facebook, Instagram, MessageCircle } from "lucide-react";
+
+const socials = [
+  { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/251991188656" },
+  { icon: Facebook, label: "Facebook", href: "https://facebook.com" },
+  { icon: Instagram, label: "Instagram", href: "https://instagram.com" },
+] as const;
 
 export function SiteFooter() {
   return (
