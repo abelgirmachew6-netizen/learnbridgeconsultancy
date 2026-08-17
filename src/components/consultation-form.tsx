@@ -3,6 +3,7 @@ import { AlertTriangle, Mail, MapPin, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 
 const destinations = ["USA", "UK", "Australia", "Europe", "Not sure yet"];
+const WEB3FORMS_ACCESS_KEY = "b377f196-f2f6-4ca8-865d-65ab34312daa";
 
 export function ConsultationForm() {
   const [submitting, setSubmitting] = useState(false);
@@ -11,27 +12,35 @@ export function ConsultationForm() {
     event.preventDefault();
     const form = event.currentTarget;
     const fd = new FormData(form);
-    const payload = {
-      firstName: String(fd.get("firstName") ?? "").trim(),
-      lastName: String(fd.get("lastName") ?? "").trim(),
-      email: String(fd.get("email") ?? "").trim(),
-      destination: String(fd.get("destination") ?? "").trim(),
-      goals: String(fd.get("goals") ?? "").trim(),
-    };
+    const firstName = String(fd.get("firstName") ?? "").trim();
+    const lastName = String(fd.get("lastName") ?? "").trim();
+    const fullName = [firstName, lastName].filter(Boolean).join(" ");
+    const email = String(fd.get("email") ?? "").trim();
+    const destination = String(fd.get("destination") ?? "").trim();
+    const goals = String(fd.get("goals") ?? "").trim();
 
-    if (!payload.firstName || !payload.email) {
+    if (!firstName || !email) {
       toast.error("Please enter your first name and email address.");
       return;
     }
 
     setSubmitting(true);
     try {
-      const res = await fetch("/api/public/consultation", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: "New Free Consultation Request",
+          from_name: "LearnBridge Website",
+          "Full Name": fullName,
+          Email: email,
+          Destination: destination || "Not specified",
+          Goals: goals || "—",
+        }),
       });
-      if (!res.ok) throw new Error("request failed");
+      const result = (await res.json().catch(() => null)) as { success?: boolean } | null;
+      if (!res.ok || !result?.success) throw new Error("request failed");
       toast.success("Request received! We'll email you to arrange your free consultation.");
       form.reset();
     } catch {
@@ -40,6 +49,7 @@ export function ConsultationForm() {
       setSubmitting(false);
     }
   }
+
 
   return (
     <section id="book" className="bg-surface">
