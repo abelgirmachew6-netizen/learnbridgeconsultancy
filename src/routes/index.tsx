@@ -10,7 +10,7 @@ import europeImg from "@/assets/dest-europe.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "LearnBridge — Study Abroad Consultancy in Addis Ababa" },
+      { title: "Learn Bridge Consultancy | Study Abroad & Visa Consultants" },
       {
         name: "description",
         content:
@@ -21,7 +21,10 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "University applications, visa support, and career guidance for students studying abroad.",
       },
+      { property: "og:url", content: "https://mock-render-viewer.lovable.app" },
+      { property: "og:type", content: "website" },
     ],
+    links: [{ rel: "canonical", href: "https://mock-render-viewer.lovable.app" }],
   }),
   component: HomePage,
 });

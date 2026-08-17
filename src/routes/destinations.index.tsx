@@ -20,7 +20,10 @@ export const Route = createFileRoute("/destinations/")({
         property: "og:description",
         content: "Discover the best countries for your education, career, and future opportunities.",
       },
+      { property: "og:url", content: "https://mock-render-viewer.lovable.app/destinations" },
+      { property: "og:type", content: "website" },
     ],
+    links: [{ rel: "canonical", href: "https://mock-render-viewer.lovable.app/destinations" }],
   }),
   component: DestinationsPage,
 });

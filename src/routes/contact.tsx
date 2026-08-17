@@ -19,7 +19,10 @@ export const Route = createFileRoute("/contact")({
         property: "og:description",
         content: "Have questions or ready to start your study abroad journey? Contact our team.",
       },
+      { property: "og:url", content: "https://mock-render-viewer.lovable.app/contact" },
+      { property: "og:type", content: "website" },
     ],
+    links: [{ rel: "canonical", href: "https://mock-render-viewer.lovable.app/contact" }],
   }),
   component: ContactPage,
 });

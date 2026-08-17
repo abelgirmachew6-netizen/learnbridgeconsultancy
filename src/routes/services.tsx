@@ -17,7 +17,10 @@ export const Route = createFileRoute("/services")({
         property: "og:description",
         content: "Application help, visa guidance, and career planning — handled step by step.",
       },
+      { property: "og:url", content: "https://mock-render-viewer.lovable.app/services" },
+      { property: "og:type", content: "website" },
     ],
+    links: [{ rel: "canonical", href: "https://mock-render-viewer.lovable.app/services" }],
   }),
   component: ServicesPage,
 });
