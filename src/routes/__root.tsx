@@ -12,6 +12,8 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
+import { StickyCta } from "@/components/sticky-cta";
+
 
 function NotFoundComponent() {
   return (
@@ -81,8 +83,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Learn Bridge Consultancy | Study Abroad & Visa Consultants" },
       {
         name: "description",
-        content: "Guidance for students studying abroad: universities, applications, and visas.",
+        content:
+          "Expert guidance for university applications and visas to Italy, Germany, the UK, and Canada. Your bridge to global education.",
       },
+
       { name: "author", content: "LearnBridge" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -126,7 +130,9 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <StickyCta />
       <Toaster richColors position="top-center" />
     </QueryClientProvider>
   );
 }
+
