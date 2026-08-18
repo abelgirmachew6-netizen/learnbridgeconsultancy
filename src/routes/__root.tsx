@@ -81,8 +81,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Learn Bridge Consultancy | Study Abroad & Visa Consultants" },
       {
         name: "description",
-        content: "Guidance for students studying abroad: universities, applications, and visas.",
+        content:
+          "Expert guidance for university applications and visas to Italy, Germany, the UK, and Canada. Your bridge to global education.",
       },
+
       { name: "author", content: "LearnBridge" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
