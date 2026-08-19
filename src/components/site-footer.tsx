@@ -47,7 +47,7 @@ export function SiteFooter() {
         <div>
           <p className="eyebrow text-navy-soft">Contact</p>
           <ul className="mt-4 space-y-2 text-sm text-navy-foreground/80">
-            <li>Addis Ababa, Ethiopia</li>
+            <li>Office: [Street address to be confirmed], Addis Ababa, Ethiopia</li>
             <li>
               <a
                 href="https://wa.me/251991188656"
