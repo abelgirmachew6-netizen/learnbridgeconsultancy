@@ -59,26 +59,31 @@ function HomePage() {
       <main>
         <section className="bg-surface">
           <div className="section-shell flex min-h-[70vh] flex-col justify-center py-24">
-            <h1 className="max-w-4xl text-4xl leading-[1.05] text-navy sm:text-5xl lg:text-6xl">
-              Start Your Global Education Journey
+            <span className="inline-flex w-fit items-center gap-2 rounded-full bg-accent/15 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-navy">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+              Now open: Intake 2026/2027
+            </span>
+            <h1 className="mt-6 max-w-4xl text-4xl leading-[1.05] text-navy sm:text-5xl lg:text-6xl">
+              Your Bridge to World-Class Education
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
-              At <span className="font-semibold text-navy">LearnBridge</span>, we help you choose the
-              right university, apply with confidence, get accepted, and secure your visa — step by
-              step.
+              Start with a{" "}
+              <span className="font-semibold text-navy">free 15-minute consultation</span> — we help
+              you choose the right university in Italy, Germany, the UK or Canada, apply with
+              confidence, and secure your visa, step by step.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link
                 to="/contact" hash="book"
                 className="rounded-md bg-navy px-6 py-3 text-sm font-semibold text-navy-foreground shadow-card transition-colors hover:bg-navy-deep"
               >
-                Book Free Consultation
+                Book 15-min call
               </Link>
               <Link
                 to="/destinations"
                 className="rounded-md bg-secondary px-6 py-3 text-sm font-semibold text-navy transition-colors hover:bg-muted"
               >
-                View Study Destinations
+                View Destinations
               </Link>
             </div>
           </div>
