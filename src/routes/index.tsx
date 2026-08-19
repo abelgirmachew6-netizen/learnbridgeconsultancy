@@ -2,10 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Compass, ShieldCheck, TrendingUp } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import usaImg from "@/assets/dest-usa.jpg";
-import ukImg from "@/assets/dest-uk.jpg";
-import ausImg from "@/assets/dest-australia.jpg";
-import europeImg from "@/assets/dest-europe.jpg";
+import { destinations, SITE_URL } from "@/data/destinations";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
