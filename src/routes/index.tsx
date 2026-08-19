@@ -2,10 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Compass, ShieldCheck, TrendingUp } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import usaImg from "@/assets/dest-usa.jpg";
-import ukImg from "@/assets/dest-uk.jpg";
-import ausImg from "@/assets/dest-australia.jpg";
-import europeImg from "@/assets/dest-europe.jpg";
+import { destinations, SITE_URL } from "@/data/destinations";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -14,17 +12,18 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "LearnBridge helps students choose the right university, apply with confidence, get accepted, and secure their visa — step by step.",
+          "Expert guidance for university applications and visas to Italy, Germany, the UK, and Canada. Your bridge to global education.",
       },
-      { property: "og:title", content: "LearnBridge — Start Your Global Education Journey" },
+      { property: "og:title", content: "Your Bridge to World-Class Education | Learn Bridge Consultancy" },
       {
         property: "og:description",
-        content: "University applications, visa support, and career guidance for students studying abroad.",
+        content:
+          "Expert guidance for university applications and visas to Italy, Germany, the UK, and Canada. Book a free 15-minute consultation.",
       },
-      { property: "og:url", content: "https://mock-render-viewer.lovable.app" },
+      { property: "og:url", content: SITE_URL },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://mock-render-viewer.lovable.app" }],
+    links: [{ rel: "canonical", href: SITE_URL }],
   }),
   component: HomePage,
 });
@@ -32,13 +31,6 @@ export const Route = createFileRoute("/")({
 const stats = [
   { value: "98%", label: "Visa Success Rate" },
   { value: "10+", label: "Study Destinations" },
-];
-
-const destinations = [
-  { slug: "usa", name: "USA", blurb: "Top universities & career opportunities", img: usaImg },
-  { slug: "uk", name: "UK", blurb: "Shorter degrees with global recognition", img: ukImg },
-  { slug: "australia", name: "Australia", blurb: "High quality education & work opportunities", img: ausImg },
-  { slug: "europe", name: "Europe", blurb: "Affordable education & diverse cultures", img: europeImg },
 ];
 
 const services = [
@@ -49,8 +41,8 @@ const services = [
   },
   {
     icon: ShieldCheck,
-    title: "Visa Support",
-    body: "We guide you through the entire visa process, ensuring your documents are complete and approved without delays.",
+    title: "Visa & Pre-Enrolment Assistance",
+    body: "Universitaly pre-enrolment, declaration of value / CIMEA, and full visa support. Italy's window opens April–June — start now.",
   },
   {
     icon: TrendingUp,
@@ -67,26 +59,31 @@ function HomePage() {
       <main>
         <section className="bg-surface">
           <div className="section-shell flex min-h-[70vh] flex-col justify-center py-24">
-            <h1 className="max-w-4xl text-4xl leading-[1.05] text-navy sm:text-5xl lg:text-6xl">
-              Start Your Global Education Journey
+            <span className="inline-flex w-fit items-center gap-2 rounded-full bg-accent/15 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-navy">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+              Now open: Intake 2026/2027
+            </span>
+            <h1 className="mt-6 max-w-4xl text-4xl leading-[1.05] text-navy sm:text-5xl lg:text-6xl">
+              Your Bridge to World-Class Education
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
-              At <span className="font-semibold text-navy">LearnBridge</span>, we help you choose the
-              right university, apply with confidence, get accepted, and secure your visa — step by
-              step.
+              Start with a{" "}
+              <span className="font-semibold text-navy">free 15-minute consultation</span> — we help
+              you choose the right university in Italy, Germany, the UK or Canada, apply with
+              confidence, and secure your visa, step by step.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link
                 to="/contact" hash="book"
                 className="rounded-md bg-navy px-6 py-3 text-sm font-semibold text-navy-foreground shadow-card transition-colors hover:bg-navy-deep"
               >
-                Book Free Consultation
+                Book 15-min call
               </Link>
               <Link
                 to="/destinations"
                 className="rounded-md bg-secondary px-6 py-3 text-sm font-semibold text-navy transition-colors hover:bg-muted"
               >
-                View Study Destinations
+                View Destinations
               </Link>
             </div>
           </div>
@@ -129,13 +126,18 @@ function HomePage() {
                   className="group relative block overflow-hidden rounded-xl shadow-card transition-shadow hover:shadow-lift"
                 >
                   <img
-                    src={d.img}
+                    src={d.card}
                     alt={`Map of ${d.name}`}
                     loading="lazy"
                     width={800}
                     height={1000}
                     className="h-72 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+                  {d.featured && (
+                    <span className="absolute left-4 top-4 rounded-full bg-accent px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-accent-foreground">
+                      Featured
+                    </span>
+                  )}
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-deep/95 to-transparent p-5 pt-16">
                     <h3 className="text-lg font-semibold text-navy-foreground">{d.name}</h3>
                     <p className="mt-1 text-xs text-navy-foreground/75">{d.blurb}</p>

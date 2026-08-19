@@ -1,178 +1,52 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import { ArrowLeft, Award, BookOpen, Briefcase, GraduationCap, Check } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import graduatesImg from "@/assets/graduates.jpg";
-import heroUsa from "@/assets/hero-usa.jpg";
-import heroUk from "@/assets/hero-uk.jpg";
-import heroAus from "@/assets/hero-australia.jpg";
-import heroEurope from "@/assets/hero-europe.jpg";
-import usaImg from "@/assets/dest-usa.jpg";
-import ukImg from "@/assets/dest-uk.jpg";
-import ausImg from "@/assets/dest-australia.jpg";
-import europeImg from "@/assets/dest-europe.jpg";
+import {
+  destinationBySlug,
+  retiredSlugs,
+  SITE_URL,
+  type IconKey,
+} from "@/data/destinations";
 
-type Country = {
-  slug: string;
-  name: string;
-  title: string;
-  intro: string;
-  bold: string;
-  hero: string;
-  card: string;
-  reasons: { icon: typeof Award; title: string; body: string }[];
-  stat: { value: string; label: string };
-  universities: { name: string; city: string }[];
-  tuition: string;
-  bullets: string[];
-  note: string;
+const icons: Record<IconKey, typeof Award> = {
+  award: Award,
+  book: BookOpen,
+  briefcase: Briefcase,
+  cap: GraduationCap,
 };
-
-const countries: Record<string, Country> = {
-  usa: {
-    slug: "usa",
-    name: "USA",
-    title: "Study in the USA",
-    intro:
-      "Top universities, strong career pathways, and programs that fit almost every academic profile.",
-    bold: "Quality education, research opportunities, and global career exposure.",
-    hero: heroUsa,
-    card: usaImg,
-    reasons: [
-      { icon: Award, title: "Top-Ranked Universities", body: "Home to many of the world's most respected institutions across every field of study." },
-      { icon: Briefcase, title: "Work After Graduation", body: "Optional Practical Training lets you gain paid work experience in your field." },
-      { icon: BookOpen, title: "Flexible Campus Life", body: "Change majors, choose electives, and build a degree around your strengths." },
-      { icon: GraduationCap, title: "Scholarships & Aid", body: "Merit awards, assistantships, and need-based aid for international students." },
-    ],
-    stat: { value: "4,000+", label: "accredited universities and colleges" },
-    universities: [
-      { name: "Harvard University", city: "Cambridge, MA" },
-      { name: "Stanford University", city: "Stanford, CA" },
-      { name: "MIT", city: "Cambridge, MA" },
-      { name: "Yale University", city: "New Haven, CT" },
-    ],
-    tuition:
-      "Tuition fees vary depending on the university and program. Scholarships and financial aid may be available based on academic performance and eligibility.",
-    bullets: [
-      "Tuition varies by university and program",
-      "Scholarships available for eligible students",
-      "We help you find options that fit your budget",
-    ],
-    note: "We guide you step-by-step to choose affordable and realistic options.",
-  },
-  uk: {
-    slug: "uk",
-    name: "UK",
-    title: "Study in the UK",
-    intro: "Shorter degrees, globally recognized qualifications, and a clear post-study work route.",
-    bold: "Finish faster, spend less, and graduate with a degree employers respect worldwide.",
-    hero: heroUk,
-    card: ukImg,
-    reasons: [
-      { icon: Award, title: "Globally Recognized Degrees", body: "UK qualifications are respected by employers and universities everywhere." },
-      { icon: BookOpen, title: "One-Year Master's", body: "Most postgraduate programs finish in 12 months, reducing total cost." },
-      { icon: Briefcase, title: "Graduate Route Visa", body: "Stay and work for two years after completing your degree." },
-      { icon: GraduationCap, title: "Strong Student Support", body: "Dedicated international offices, housing help, and career services." },
-    ],
-    stat: { value: "160+", label: "universities and higher education institutions" },
-    universities: [
-      { name: "University of Oxford", city: "Oxford" },
-      { name: "University of Cambridge", city: "Cambridge" },
-      { name: "Imperial College London", city: "London" },
-      { name: "University of Edinburgh", city: "Edinburgh" },
-    ],
-    tuition:
-      "Tuition depends on the course and city. Many universities offer international scholarships that reduce fees significantly.",
-    bullets: [
-      "Shorter programs mean lower total cost",
-      "International scholarships widely available",
-      "Part-time work allowed during term",
-    ],
-    note: "We help you compare cities, courses and living costs before you apply.",
-  },
-  australia: {
-    slug: "australia",
-    name: "Australia",
-    title: "Study in Australia",
-    intro: "High quality education, safe cities, and excellent post-study work opportunities.",
-    bold: "Study, work, and build experience in one of the world's most livable countries.",
-    hero: heroAus,
-    card: ausImg,
-    reasons: [
-      { icon: Award, title: "World-Class Institutions", body: "Australian universities rank highly for teaching and research quality." },
-      { icon: Briefcase, title: "Post-Study Work Rights", body: "Work full-time for two to four years after graduating, depending on your degree." },
-      { icon: BookOpen, title: "Work While Studying", body: "Part-time work rights help you support your living costs." },
-      { icon: GraduationCap, title: "Student Protections", body: "Strong legal protections and support systems for international students." },
-    ],
-    stat: { value: "43", label: "universities across every major city" },
-    universities: [
-      { name: "University of Melbourne", city: "Melbourne" },
-      { name: "University of Sydney", city: "Sydney" },
-      { name: "Australian National University", city: "Canberra" },
-      { name: "University of Queensland", city: "Brisbane" },
-    ],
-    tuition:
-      "Fees differ by state and program. Living costs vary between major cities and regional areas, where scholarships are often larger.",
-    bullets: [
-      "Regional study can lower cost and extend visas",
-      "Merit scholarships for strong applicants",
-      "Work rights help cover living expenses",
-    ],
-    note: "We map your budget against cities and programs before you commit.",
-  },
-  europe: {
-    slug: "europe",
-    name: "Europe",
-    title: "Study in Europe",
-    intro: "Affordable tuition, English-taught programs, and access to a diverse continent.",
-    bold: "Low-cost, high-quality education in the heart of Europe.",
-    hero: heroEurope,
-    card: europeImg,
-    reasons: [
-      { icon: Award, title: "Low or No Tuition", body: "Several countries charge little or nothing for public university programs." },
-      { icon: BookOpen, title: "English-Taught Degrees", body: "Thousands of programs are delivered fully in English." },
-      { icon: Briefcase, title: "Career Access", body: "Graduate job-search visas and strong demand in tech, engineering and health." },
-      { icon: GraduationCap, title: "Schengen Travel", body: "Live in one country and travel freely across much of the continent." },
-    ],
-    stat: { value: "3,000+", label: "English-taught programs across Europe" },
-    universities: [
-      { name: "TU Munich", city: "Germany" },
-      { name: "University of Amsterdam", city: "Netherlands" },
-      { name: "KU Leuven", city: "Belgium" },
-      { name: "Uppsala University", city: "Sweden" },
-    ],
-    tuition:
-      "Public universities in several countries charge minimal tuition, with only administrative fees. Living costs are the main expense.",
-    bullets: [
-      "Tuition-free options in select countries",
-      "Lower living costs than the US or UK",
-      "Scholarships such as Erasmus+ available",
-    ],
-    note: "We help you target countries where your profile and budget fit best.",
-  },
-};
-
-const SITE_URL = "https://project--b431bd4f-7887-4558-94e9-8488a27e23b2.lovable.app";
 
 export const Route = createFileRoute("/destinations/$country")({
   loader: ({ params }) => {
-    const data = countries[params.country.toLowerCase()];
+    const slug = params.country.toLowerCase();
+    if (retiredSlugs.includes(slug)) throw redirect({ to: "/destinations" });
+    const data = destinationBySlug[slug];
     if (!data) throw notFound();
     return { slug: data.slug, name: data.name, title: data.title, intro: data.intro };
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Destination unavailable — LearnBridge" }, { name: "robots", content: "noindex" }] };
+      return {
+        meta: [
+          { title: "Destination unavailable — Learn Bridge Consultancy" },
+          { name: "robots", content: "noindex" },
+        ],
+      };
     }
     const c = loaderData;
     const url = `${SITE_URL}/destinations/${c.slug}`;
     return {
       meta: [
-        { title: `${c.title} — Universities, Tuition & Visa | LearnBridge` },
-        { name: "description", content: `${c.intro} LearnBridge guides you through applications, scholarships and visas for ${c.name}.` },
-        { property: "og:title", content: `${c.title} | LearnBridge` },
+        { title: `${c.title} — Universities, Tuition & Visa | Learn Bridge` },
+        {
+          name: "description",
+          content: `${c.intro} Learn Bridge Consultancy guides you through applications, scholarships and visas for ${c.name}.`,
+        },
+        { property: "og:title", content: `${c.title} | Learn Bridge Consultancy` },
         { property: "og:description", content: c.intro },
         { property: "og:url", content: url },
+        { property: "og:type", content: "article" },
       ],
       links: [{ rel: "canonical", href: url }],
     };
@@ -212,10 +86,9 @@ function UnknownDestination() {
   );
 }
 
-
 function CountryPage() {
   const { slug } = Route.useLoaderData();
-  const c = countries[slug]!;
+  const c = destinationBySlug[slug]!;
 
   return (
     <div className="min-h-screen bg-background">
@@ -243,10 +116,11 @@ function CountryPage() {
               <p className="mt-5 max-w-xl text-sm text-navy-foreground/80">{c.intro}</p>
               <p className="mt-3 max-w-xl text-sm font-semibold">{c.bold}</p>
               <Link
-                to="/contact" hash="book"
+                to="/contact"
+                hash="book"
                 className="mt-8 inline-flex rounded-md bg-navy-foreground px-6 py-3 text-sm font-semibold text-navy hover:opacity-90"
               >
-                Book Free Consultation
+                Book 15-min call
               </Link>
             </div>
           </div>
@@ -257,13 +131,16 @@ function CountryPage() {
             <div>
               <h2 className="text-3xl text-navy">Why Study in {c.name}?</h2>
               <div className="mt-8 grid gap-6 sm:grid-cols-2">
-                {c.reasons.map((r) => (
-                  <div key={r.title}>
-                    <r.icon className="h-5 w-5 text-accent" />
-                    <h3 className="mt-3 text-sm font-semibold text-navy">{r.title}</h3>
-                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{r.body}</p>
-                  </div>
-                ))}
+                {c.reasons.map((r) => {
+                  const Icon = icons[r.icon];
+                  return (
+                    <div key={r.title}>
+                      <Icon className="h-5 w-5 text-accent" />
+                      <h3 className="mt-3 text-sm font-semibold text-navy">{r.title}</h3>
+                      <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{r.body}</p>
+                    </div>
+                  );
+                })}
               </div>
             </div>
             <div className="relative overflow-hidden rounded-xl shadow-lift">
@@ -334,10 +211,11 @@ function CountryPage() {
             </p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
               <Link
-                to="/contact" hash="book"
+                to="/contact"
+                hash="book"
                 className="rounded-md bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground hover:opacity-90"
               >
-                Book Free Consultation
+                Book 15-min call
               </Link>
               <Link
                 to="/destinations"

@@ -47,7 +47,7 @@ export function SiteFooter() {
         <div>
           <p className="eyebrow text-navy-soft">Contact</p>
           <ul className="mt-4 space-y-2 text-sm text-navy-foreground/80">
-            <li>Addis Ababa, Ethiopia</li>
+            <li>Office: [Street address to be confirmed], Addis Ababa, Ethiopia</li>
             <li>
               <a
                 href="https://wa.me/251991188656"
@@ -88,7 +88,7 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-navy-foreground/10">
-        <div className="section-shell py-5 text-xs text-navy-foreground/60">
+        <div className="section-shell py-5 pb-24 text-xs text-navy-foreground/60 sm:pb-5">
           © 2025 Learn Bridge Consultancy. All rights reserved.
         </div>
       </div>

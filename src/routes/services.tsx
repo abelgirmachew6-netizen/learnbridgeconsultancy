@@ -17,10 +17,10 @@ export const Route = createFileRoute("/services")({
         property: "og:description",
         content: "Application help, visa guidance, and career planning — handled step by step.",
       },
-      { property: "og:url", content: "https://mock-render-viewer.lovable.app/services" },
+      { property: "og:url", content: "https://learnbridgeconsultancy.lovable.app/services" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://mock-render-viewer.lovable.app/services" }],
+    links: [{ rel: "canonical", href: "https://learnbridgeconsultancy.lovable.app/services" }],
   }),
   component: ServicesPage,
 });
@@ -34,9 +34,15 @@ const services = [
   },
   {
     icon: ShieldCheck,
-    title: "Visa Support",
-    body: "We guide you through the entire visa process, ensuring your documents are complete and approved without delays.",
-    steps: ["Document checklist review", "Financial evidence guidance", "Interview preparation"],
+    title: "Visa & Pre-Enrolment Assistance",
+    body: "Universitaly pre-enrolment, declaration of value / CIMEA recognition, and full visa support — documents complete and approved without delays.",
+    steps: [
+      "Universitaly pre-enrolment & declaration of value / CIMEA",
+      "Document checklist and financial evidence guidance",
+      "Visa appointment and interview preparation",
+    ],
+    highlight:
+      "Italy's pre-enrolment window opens April–June — places are limited, so start your application now.",
   },
   {
     icon: TrendingUp,
@@ -70,6 +76,11 @@ function ServicesPage() {
                 </div>
                 <h2 className="mt-5 text-lg font-semibold text-navy">{s.title}</h2>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
+                {"highlight" in s && s.highlight ? (
+                  <p className="mt-4 rounded-md border-l-2 border-accent bg-accent/10 px-4 py-3 text-xs font-semibold leading-relaxed text-navy">
+                    {s.highlight}
+                  </p>
+                ) : null}
                 <ul className="mt-5 space-y-2 border-t border-border pt-5 text-sm text-muted-foreground">
                   {s.steps.map((step) => (
                     <li key={step} className="flex gap-2">

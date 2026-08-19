@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AlertTriangle, Mail, MapPin, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 
-const destinations = ["USA", "UK", "Australia", "Europe", "Not sure yet"];
+const destinations = ["Italy", "Germany", "UK", "Canada", "Not sure yet"];
 const WEB3FORMS_ACCESS_KEY = "8572abb1-60ac-49ef-8737-f1e4fcfb0bc2";
 
 export function ConsultationForm() {
