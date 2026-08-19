@@ -76,6 +76,11 @@ function ServicesPage() {
                 </div>
                 <h2 className="mt-5 text-lg font-semibold text-navy">{s.title}</h2>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
+                {"highlight" in s && s.highlight ? (
+                  <p className="mt-4 rounded-md border-l-2 border-accent bg-accent/10 px-4 py-3 text-xs font-semibold leading-relaxed text-navy">
+                    {s.highlight}
+                  </p>
+                ) : null}
                 <ul className="mt-5 space-y-2 border-t border-border pt-5 text-sm text-muted-foreground">
                   {s.steps.map((step) => (
                     <li key={step} className="flex gap-2">
