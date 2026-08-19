@@ -14,15 +14,16 @@ export const Route = createFileRoute("/")({
         content:
           "LearnBridge helps students choose the right university, apply with confidence, get accepted, and secure their visa — step by step.",
       },
-      { property: "og:title", content: "LearnBridge — Start Your Global Education Journey" },
+      { property: "og:title", content: "Your Bridge to World-Class Education | Learn Bridge Consultancy" },
       {
         property: "og:description",
-        content: "University applications, visa support, and career guidance for students studying abroad.",
+        content:
+          "Expert guidance for university applications and visas to Italy, Germany, the UK, and Canada. Book a free 15-minute consultation.",
       },
-      { property: "og:url", content: "https://mock-render-viewer.lovable.app" },
+      { property: "og:url", content: SITE_URL },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://mock-render-viewer.lovable.app" }],
+    links: [{ rel: "canonical", href: SITE_URL }],
   }),
   component: HomePage,
 });
@@ -30,13 +31,6 @@ export const Route = createFileRoute("/")({
 const stats = [
   { value: "98%", label: "Visa Success Rate" },
   { value: "10+", label: "Study Destinations" },
-];
-
-const destinations = [
-  { slug: "usa", name: "USA", blurb: "Top universities & career opportunities", img: usaImg },
-  { slug: "uk", name: "UK", blurb: "Shorter degrees with global recognition", img: ukImg },
-  { slug: "australia", name: "Australia", blurb: "High quality education & work opportunities", img: ausImg },
-  { slug: "europe", name: "Europe", blurb: "Affordable education & diverse cultures", img: europeImg },
 ];
 
 const services = [
@@ -47,8 +41,8 @@ const services = [
   },
   {
     icon: ShieldCheck,
-    title: "Visa Support",
-    body: "We guide you through the entire visa process, ensuring your documents are complete and approved without delays.",
+    title: "Visa & Pre-Enrolment Assistance",
+    body: "Universitaly pre-enrolment, declaration of value / CIMEA, and full visa support. Italy's window opens April–June — start now.",
   },
   {
     icon: TrendingUp,
