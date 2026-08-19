@@ -121,13 +121,18 @@ function HomePage() {
                   className="group relative block overflow-hidden rounded-xl shadow-card transition-shadow hover:shadow-lift"
                 >
                   <img
-                    src={d.img}
+                    src={d.card}
                     alt={`Map of ${d.name}`}
                     loading="lazy"
                     width={800}
                     height={1000}
                     className="h-72 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+                  {d.featured && (
+                    <span className="absolute left-4 top-4 rounded-full bg-accent px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-accent-foreground">
+                      Featured
+                    </span>
+                  )}
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-deep/95 to-transparent p-5 pt-16">
                     <h3 className="text-lg font-semibold text-navy-foreground">{d.name}</h3>
                     <p className="mt-1 text-xs text-navy-foreground/75">{d.blurb}</p>
