@@ -12,7 +12,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "LearnBridge helps students choose the right university, apply with confidence, get accepted, and secure their visa — step by step.",
+          "Expert guidance for university applications and visas to Italy, Germany, the UK, and Canada. Your bridge to global education.",
       },
       { property: "og:title", content: "Your Bridge to World-Class Education | Learn Bridge Consultancy" },
       {
