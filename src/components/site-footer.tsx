@@ -88,7 +88,7 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-navy-foreground/10">
-        <div className="section-shell py-5 text-xs text-navy-foreground/60">
+        <div className="section-shell py-5 pb-24 text-xs text-navy-foreground/60 sm:pb-5">
           © 2025 Learn Bridge Consultancy. All rights reserved.
         </div>
       </div>
