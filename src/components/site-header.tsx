@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import logoAsset from "@/assets/learnbridge-logo.png.asset.json";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -14,10 +15,20 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur">
-      <div className="section-shell flex h-16 items-center justify-between">
-        <Link to="/" className="font-display text-xl font-bold tracking-tight text-navy">
-          LearnBridge
+    <header className="sticky top-0 z-50 border-b border-border/70 bg-card">
+      <div className="section-shell relative flex h-20 items-center justify-between">
+        <Link
+          to="/"
+          aria-label="Learn Bridge Consultancy home"
+          className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0"
+        >
+          <img
+            src={logoAsset.url}
+            alt="Learn Bridge Consultancy"
+            className="h-[45px] w-auto"
+            width={244}
+            height={97}
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">

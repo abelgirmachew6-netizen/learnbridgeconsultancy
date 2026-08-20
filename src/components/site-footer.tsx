@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, MessageCircle } from "lucide-react";
+import logoAsset from "@/assets/learnbridge-logo.png.asset.json";
 
 const socials = [
   { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/251991188656" },
@@ -11,9 +12,17 @@ export function SiteFooter() {
   return (
     <footer className="bg-navy-deep text-navy-foreground">
       <div className="section-shell grid gap-10 py-14 md:grid-cols-3">
-        <div>
-          <p className="font-display text-xl font-bold">LearnBridge</p>
-          <p className="mt-3 max-w-xs text-sm text-navy-foreground/70">
+        <div className="flex flex-col items-center text-center md:items-start md:text-left">
+          <Link to="/" aria-label="Learn Bridge Consultancy home">
+            <img
+              src={logoAsset.url}
+              alt="Learn Bridge Consultancy"
+              className="h-[60px] w-auto rounded-md bg-white px-3 py-2"
+              width={244}
+              height={97}
+            />
+          </Link>
+          <p className="mt-4 max-w-xs text-sm text-navy-foreground/70">
             Clear, honest, step-by-step guidance for students who want to study abroad.
           </p>
         </div>
