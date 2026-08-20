@@ -3,6 +3,8 @@ import { ArrowRight, Compass, ShieldCheck, TrendingUp } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { destinations, SITE_URL } from "@/data/destinations";
+import { ItalyRoadmap } from "@/components/italy-roadmap";
+import { FaqSection } from "@/components/faq-section";
 
 
 export const Route = createFileRoute("/")({
@@ -165,7 +167,11 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="py-20">
+        <ItalyRoadmap />
+
+        <FaqSection />
+
+        <section className="pb-20">
           <div className="section-shell rounded-2xl bg-navy px-8 py-14 text-center text-navy-foreground shadow-lift">
             <h2 className="text-3xl">Ready to Start Your Journey?</h2>
             <p className="mx-auto mt-4 max-w-xl text-sm text-navy-foreground/75">
