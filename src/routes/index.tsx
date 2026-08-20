@@ -3,6 +3,8 @@ import { ArrowRight, Compass, ShieldCheck, TrendingUp } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { destinations, SITE_URL } from "@/data/destinations";
+import { ItalyRoadmap } from "@/components/italy-roadmap";
+import { FaqSection } from "@/components/faq-section";
 
 
 export const Route = createFileRoute("/")({
