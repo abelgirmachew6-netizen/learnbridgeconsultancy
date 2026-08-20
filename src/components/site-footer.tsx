@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, MessageCircle } from "lucide-react";
+import logoAsset from "@/assets/learnbridge-logo.png.asset.json";
 
 const socials = [
   { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/251991188656" },
