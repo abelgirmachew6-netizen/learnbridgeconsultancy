@@ -58,7 +58,7 @@ function ContactPage() {
         <ConsultationForm />
 
         <section className="bg-surface pb-16">
-          <div className="section-shell grid gap-8 lg:grid-cols-[1.2fr_1fr]">
+          <div className="section-shell max-w-3xl mx-auto">
             <div className="rounded-xl bg-card p-8 shadow-card">
               <h2 className="text-2xl text-navy">Prefer to chat right now?</h2>
               <p className="mt-2 text-sm text-muted-foreground">
@@ -81,41 +81,7 @@ function ContactPage() {
             </div>
 
 
-            <aside className="rounded-xl bg-navy p-8 text-navy-foreground shadow-lift">
-              <h2 className="flex items-center gap-2 text-xl">
-                <MapPin className="h-5 w-5 text-accent" />
-                Contact Information
-              </h2>
-
-              <div className="mt-8 space-y-6 text-sm">
-                <div>
-                  <p className="eyebrow text-navy-soft">Address</p>
-                  <p className="mt-1 font-semibold">Addis Ababa, Ethiopia</p>
-                </div>
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <div>
-                    <p className="eyebrow text-navy-soft">WhatsApp</p>
-                    <a href="https://wa.me/251991188656" className="mt-1 block hover:underline">
-                      +251 991188656
-                    </a>
-                  </div>
-                  <div>
-                    <p className="eyebrow text-navy-soft">Email</p>
-                    <a
-                      href="mailto:learnbridgeconsultancy@gmail.com"
-                      className="mt-1 block break-all underline underline-offset-4"
-                    >
-                      learnbridgeconsultancy@gmail.com
-                    </a>
-                  </div>
-                </div>
-                <div>
-                  <p className="eyebrow text-navy-soft">Consultation Hours</p>
-                  <p className="mt-1">Mon–Fri: 8:30 AM – 6:00 PM</p>
-                  <p className="text-navy-foreground/60">Closed on Weekends &amp; Public Holidays</p>
-                </div>
-              </div>
-            </aside>
+           
           </div>
         </section>
       </main>
