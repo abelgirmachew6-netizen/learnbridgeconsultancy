@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, MessageCircle } from "lucide-react";
-import logoAsset from "@/assets/learnbridge-logo.png.asset.json";
+import { Instagram, MessageCircle } from "lucide-react";
+
 
 const socials = [
   { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/251991188656" },
-  { icon: Facebook, label: "Facebook", href: "https://facebook.com" },
+ 
   { icon: Instagram, label: "Instagram", href: "https://instagram.com" },
 ] as const;
 
@@ -15,7 +15,7 @@ export function SiteFooter() {
         <div className="flex flex-col items-center text-center md:items-start md:text-left">
           <Link to="/" aria-label="Learn Bridge Consultancy home">
             <img
-              src={logoAsset.url}
+              src="/logo.png"
               alt="Learn Bridge Consultancy"
               className="h-[60px] w-auto rounded-md bg-white px-3 py-2"
               width={244}
