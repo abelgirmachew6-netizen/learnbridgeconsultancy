@@ -185,7 +185,18 @@ export function ConsultationForm() {
               maxLength={2000}
               placeholder="What would you like to study, and where are you in the process?"
               className="w-full rounded-md border border-border bg-card p-4 text-sm outline-none transition-colors focus:border-navy focus:ring-2 focus:ring-navy/20"
+            /> 
+            <div className="mt-4 flex items-center gap-2.5">
+            <input
+              type="checkbox"
+              id="directApply"
+              name="directApply"
+              className="h-4 w-4 rounded border-border text-navy focus:ring-accent"
             />
+            <label htmlFor="directApply" className="text-xs text-muted-foreground select-none cursor-pointer">
+              I am ready to start my application immediately (skip the intro call)
+            </label>
+          </div>
             <button
               type="submit"
               disabled={submitting}
