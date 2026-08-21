@@ -5,7 +5,7 @@ import { Instagram, MessageCircle } from "lucide-react";
 const socials = [
   { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/251991188656" },
  
-  { icon: Instagram, label: "Instagram", href: "https://instagram.com" },
+  { icon: Instagram, label: "Instagram", href: "https://instagram.com/learnbridgeconsultancy" }
 ] as const;
 
 export function SiteFooter() {
