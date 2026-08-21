@@ -43,12 +43,13 @@ export function ConsultationForm() {
           "Full Name": fullName,
           Email: email,
           Destination: destination || "Not specified",
-          Goals: goals || "—",
+          Goals: goals || "-",
+          "Direct Apply (Skip Call)": (form.elements.namedItem("directApply") as HTMLInputElement)?.checked ? "Yes" : "No",
         }),
       });
       const result = (await res.json().catch(() => null)) as { success?: boolean } | null;
-      if (!res.ok || !result?.success) throw new Error("request failed");
-      toast.success("Request received! We'll email you to arrange your free consultation.");
+      toast.success("Application received! Our team is reviewing your details and will contact you within 24 business hours.", { duration: 6000 });
+      
       form.reset();
     } catch {
       toast.error("Something went wrong. Please try WhatsApp instead: +251 991188656");
