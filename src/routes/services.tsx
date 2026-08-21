@@ -104,7 +104,7 @@ function ServicesPage() {
               to="/contact"
               className="mt-7 inline-flex rounded-md bg-navy-foreground px-6 py-3 text-sm font-semibold text-navy hover:opacity-90"
             >
-              Book Free Consultation
+              Book 15-min call
             </Link>
           </div>
         </section>
