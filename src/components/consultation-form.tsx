@@ -203,7 +203,7 @@ export function ConsultationForm() {
               aria-busy={submitting}
               className="mt-5 w-full rounded-md bg-navy px-6 py-3.5 text-sm font-semibold text-navy-foreground transition-colors hover:bg-navy-deep active:bg-navy-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy/40 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {submitting ? "Sending…" : "Book Free Consultation"}
+              {submitting ? "Sending…" : "Submit"}
             </button>
             <p className="mt-3 text-center text-xs text-muted-foreground">
               Free 15–20 minute consultation • No commitment
