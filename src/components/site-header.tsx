@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import logoAsset from "@/assets/learnbridge-logo.png.asset.json";
+
 
 const nav = [
   { to: "/", label: "Home" },
@@ -23,7 +23,7 @@ export function SiteHeader() {
           className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0"
         >
           <img
-            src={logoAsset.url}
+            src="/logo.png"
             alt="Learn Bridge Consultancy"
             className="h-[45px] w-auto"
             width={244}
