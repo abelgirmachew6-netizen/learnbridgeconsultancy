@@ -69,11 +69,8 @@ function HomePage() {
               Your Bridge to World-Class Education
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
-              Start with a{" "}
-              <span className="font-semibold text-navy">free 15-minute consultation</span> — we help
-              you choose the right university in Italy, Germany, the UK or Canada, apply with
-              confidence, and secure your visa, step by step.
-            </p>
+            Expert guidance for <span className="font-semibold text-navy">Undergraduate (Bachelor's)</span> and <span className="font-semibold text-navy">Master's</span> university admissions and scholarships in Italy, Germany, the UK, and Canada. Start with a free 15-minute consultation or message us directly to begin your application.
+          </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link
                 to="/contact" hash="book"
@@ -85,7 +82,7 @@ function HomePage() {
                 to="/destinations"
                 className="rounded-md bg-secondary px-6 py-3 text-sm font-semibold text-navy transition-colors hover:bg-muted"
               >
-                View Destinations
+                Start Application
               </Link>
             </div>
           </div>
