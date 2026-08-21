@@ -178,7 +178,7 @@ function HomePage() {
               to="/contact" hash="book"
               className="mt-8 inline-flex items-center gap-2 rounded-md bg-navy-foreground px-6 py-3 text-sm font-semibold text-navy transition-opacity hover:opacity-90"
             >
-              Book Free Consultation <ArrowRight className="h-4 w-4" />
+              Book 15-min call <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </section>
